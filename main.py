@@ -5,6 +5,9 @@ number = "0"
 team = "Max"
 grade = "- FR -"
 age = random.randint(14,15)
+energy = 10
+
+league = "high school"
 
 grades = ["- FR -","- SO -","- JR -","- SR -"]
 
@@ -147,8 +150,13 @@ def print_stats():
   global speed
   global agility
   ovr = (strength + shortacc + longacc + speed + agility) / 5
-  overall = round(ovr, 2)
-  print(str(overall) + " OVR - " + str(strength) + " STR - " + str(shortacc) + " SAC - " + str(longacc) + " LAC - " + str(speed) + " SPD - " + str(agility) + " AGL")
+  overall = round(ovr, 1)
+  rstrength = round(strength,1)
+  rshortacc = round(shortacc,1)
+  rlongacc = round(longacc,1)
+  rspeed = round(speed,1)
+  ragility = round(agility,1)
+  print(str(overall) + " OVR - " + str(rstrength) + " STR - " + str(rshortacc) + " SAC - " + str(rlongacc) + " LAC - " + str(rspeed) + " SPD - " + str(ragility) + " AGL")
 
 def train():
   global strength
@@ -161,22 +169,28 @@ def train():
   global coneslvl
   global targetslvl
   global fieldlvl
-  print("LIFT | SPRINT | CONES | TARGET TOSS | LONG TOSS")
-  train_type = input("How would you like to train? ").lower()
-  train_effect = (0.1 * random.randint(1,3))
-  while train_type != "lift" and train_type != "sprint" and train_type != "cones" and train_type != "target toss" and train_type != "long toss":
+  global energy
+  energycost = random.randint(1,2)
+  if energy < energycost:
+    print("You're too tired to train. Come back with more energy")
+  else:
     print("LIFT | SPRINT | CONES | TARGET TOSS | LONG TOSS")
-    train_type = input("Enter a valid training method: ").lower()
-  if train_type == "lift":
-    strength += (train_effect * weightslvl)
-  if train_type == "sprint":
-    speed += (train_effect * tracklvl)
-  if train_type == "cones":
-    agility += (train_effect * coneslvl)
-  if train_type == "target toss":
-    shortacc += (train_effect * targetslvl)
-  if train_type == "long toss":
-    longacc += (train_effect * fieldlvl)
+    train_type = input("How would you like to train? ").lower()
+    train_effect = (0.1 * random.randint(1,3))
+    while train_type != "lift" and train_type != "sprint" and train_type != "cones" and train_type != "target toss" and train_type != "long toss":
+      print("LIFT | SPRINT | CONES | TARGET TOSS | LONG TOSS")
+      train_type = input("Enter a valid training method: ").lower()
+    if train_type == "lift":
+      strength += (train_effect * weightslvl)
+    if train_type == "sprint":
+      speed += (train_effect * tracklvl)
+    if train_type == "cones":
+      agility += (train_effect * coneslvl)
+    if train_type == "target toss":
+      shortacc += (train_effect * targetslvl)
+    if train_type == "long toss":
+      longacc += (train_effect * fieldlvl)
+    energy -= energycost
   print()
   print_dash()
 
@@ -257,26 +271,39 @@ def print_dash():
   global team
   global grade
   global age
-  print("#" + number + " " + name + " - QB - " + team + " " + grade + " " + str(age) + " - $" + str(money))
+  global energy
+  print("#" + number + " " + name + " - QB - " + team + " " + grade + " " + str(age) + " - $" + str(money) + " - " + str(energy) + " Energy")
   print_stats()
   print()
   print_training()
   print()
-  print("PLAY | SEE TEAM | TRAIN")
+  print("PLAY | SEE TEAM | TRAIN | SHOP")
   option = input("Select an option: ").lower()
-  while option != "play" and option != "see team" and option != "train":
+  while option != "play" and option != "see team" and option != "train" and option != "shop":
     print("Enter a valid option:")
-    print("PLAY | SEE TEAM | TRAIN")
+    print("PLAY | SEE TEAM | TRAIN | SHOP")
     option = input("Select an option: ").lower()
   print()
   if option == "play":
-    play(random.choice(high_schools))
+    season()
   if option == "see team":
     print_team()
   if option == "train":
     train()
+  if option == "shop":
+    shop()
+
+def season():
+  league
+  if league == "high school":
+    opponents = high_schools
+    season_length = 8
+  if wins + losses < season_length:
+    play(random.choice(opponents))
+  print_dash()
 
 def play(opponent):
+  global team
   high_schools.remove(opponent)
   home_or_away = random.randint(1,2)
   if home_or_away == 1:
@@ -284,6 +311,75 @@ def play(opponent):
   else:
     print(opponent + " at " + team)
   input("Press enter to continue")
+
+pos = "OFF"
+
+def possession():
+  global pos
+  time = 60
+  if time > 45:
+    quarter == 1
+  elif time < 45 and time > 30:
+    quarter == 2
+  elif time == 30:
+    print("Halftime")
+  elif time < 45 and time < 15:
+    quarter == 3
+  elif time < 15:
+    quarter == 4
+  elif time == 0:
+    print("Game over")
+  if pos == "OFF":
+    pos = "DEF"
+    time
+  else:
+    pos = "OFF"
+
+weights_price = 5
+track_price = 5
+cones_price = 5
+targets_price = 5
+field_price = 5
+
+def shop():
+  global money
+  global weights_price
+  global track_price
+  global cones_price
+  global targets_price
+  global field_price
+  global weightslvl
+  global tracklvl
+  global coneslvl
+  global targetslvl
+  global fieldlvl
+  global money
+  print("UPGRADE WEIGHTS - $" + str(weights_price) + " | UPGRADE TRACK - $" + str(track_price) + " | UPGRADE CONES  - $" + str(cones_price) + " | UPGRADE TARGETS  - $" + str(targets_price) + " | UPGRADE FIELD $- " + str(field_price))
+  purchase = input("What would you like to buy? ").lower()
+  while "weights" not in purchase and "track" not in purchase and "cones" not in purchase and "targets" not in purchase and "field" not in purchase:
+    purchase = input("Enter a valid item ").lower()
+  if "weights" in purchase:
+    weightslvl += 1
+    money -= weights_price
+    weights_price += 5
+  if "track" in purchase:
+    tracklvl += 1
+    money -= track_price
+    track_price += 5
+  if "cones" in purchase:
+    coneslvl += 1
+    money -= cones_price
+    cones_price += 5
+  if "targets" in purchase:
+    targetslvl += 1
+    money -= targets_price
+    targets_price += 5
+  if "field" in purchase:
+    fieldlvl += 1
+    money -= field_price
+    field_price += 5
+  else:
+    print_dash()
 
 def start():
   get_name()
