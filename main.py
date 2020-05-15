@@ -73,6 +73,11 @@ if rbgrade == "- JR -":
 if rbgrade == "- SR -":
   rbage = 17
 
+olovr = random.randint(2,30)
+dl = random.randint(2,30)
+lb = random.randint(2,30)
+db = random.randint(2,30)
+
 acceptable_numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"]
 wr_numbers = ["10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89"]
 te_numbers = ["40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89"]
@@ -226,7 +231,6 @@ def get_team_numbers():
     rb_numbers.remove(te_num)
   rb_num = random.choice(rb_numbers)
 
-
 def print_team():
   global wr1
   global wr1speed
@@ -253,12 +257,20 @@ def print_team():
   global name
   global wins
   global losses
+  global olovr
+  global dl
+  global db
+  global lb
   print(team + " " + str(wins) + "-" + str(losses))
   print("#" + number + " " + name + " - QB " + grade + " " + str(age))
   print("#" + wr1_num + " " + wr1 + " - WR - " + str(wr1speed) + " SPD - " + str(wr1catch) + " CAT " + wr1grade + " " + str(wr1age))
   print("#" + wr2_num + " " + wr2 + " - WR - " + str(wr2speed) + " SPD - " + str(wr2catch) + " CAT " + wr2grade + " " + str(wr2age))
   print("#" + te_num + " " + te + " - TE - " + str(tespeed) + " SPD - " + str(tecatch) + " CAT " + tegrade + " " + str(teage))
   print("#" + rb_num + " " + rb + " - RB - " + str(rbspeed) + " SPD - " + str(rbcatch) + " CAT " + rbgrade + " " + str(rbage))
+  print("OL - " + str(olovr))
+  print("DL - " + str(dl))
+  print("LB - " + str(lb))
+  print("DB - " + str(db))  
   print()
   input("Press Enter to Continue ")
   print()
