@@ -4,9 +4,12 @@ name = "Max"
 number = "0"
 team = "Max"
 grade = "- FR -"
-age = random.randint(15,16)
+age = random.randint(14,15)
 
 grades = ["- FR -","- SO -","- JR -","- SR -"]
+
+wins = 0
+losses = 0
 
 first_name = ["Max", "Joe", "Teddy", "Xavier", "Miguel", "Anthony", "Richie", "Jeff", "Ethan", "Josh", "Noah", "Eli", "Ed", "Troy", "Dean", "Ben", "Jacob", "Kevin",  "Lou", "Mike", "Michael", "Patrick", "Len", "Paul", "CJ", "John", "Jon", "Andre", "Pierce", "Rob", "Joel", "Jacoby", "Mark", "JJ", "Zach", "Coby", "Brian", "Alfred", "Lamar", "Deshaun", "Mitch", "Chase", "Will", "Roger", "Scout", "Alex", "Gene", "Roslyn", "Austin", "Tavon", "Collin", "Jacoby", "Jonah", "Thomas", "Taylor", "James", "David", "Warren", "Joey", "Robin", "Lily", "Jim", "Pam", "Ryan", "Carson", "Kelly", "Stan", "Stanley", "Parker", "Marshall", "Brandon", "Kareem", "Jabari", "Logan", "Brittney", "Vincent", "Phil", "Brad", "Peter", "Randy", "Emmanuel", "Clark", "Scott", "Adam", "Daniel", "Hannah", "Nelson", "Rick", "Morty", "Jerry", "Homer", "Chris", "Stew", "Bob", "Bobby", "Gabe", "Evan", "Kyle", "Carmen", "Carter", "Steve", "Steven", "Aaron", "Charlie", "Morgan", "Robert", "Mack", "Jackson", "Luke", "Lucas", "Luka", "Oliver", "Harrison", "Harry", "Hugh", "Cole", "Allen", "Kenny", "Kevin", "Jeff", "Derek", "Jimmy", "Joakim", "Tyler", "Ty", "Nathan", "Nate", "Jason", "Fred", "Carrie", "Francis", "Malcolm", "Reese", "Hal", "Frank", "Brooke", "Nolan", "Niko", "Brennan", "Drew", "Dakota", "Tony", "Antonio", "Jack", "Ron", "Jude", "Howard", "Tavon", "Bruce", "Vandan", "Timothy", "John", "Michael", "Sam", "Andrew", "Dan", "John", "Kyle", "Kyler", "Bruce", "Andy", "Tanner", "Buzz", "Esteban", "Red", "Marshawn", "Darius", "Carmello"]
 last_name = ["Kraus", "Chaiken", "Harris", "Smith", "Johnson", "Wufsus", "Rudd", "Kruger", "Shah", "Winger", "Malone", "Barnes", "Bryant", "Ali", "Scott", "Edwards", "Patrick", "Hershey", "Belg", "Snow", "Stark", "Fields", "Kammen", "Greenberg", "Jackson", "Carter", "McGrane", "Kornfeld", "White", "Black", "Turner", "Thomson", "Cranston", "Banks", "Watson", "Young", "Venable", "Watt", "Werth", "Hendricks", "Gilfoyle", "Woods", "Pecan", "Haut", "Hooper", "Liu", "Austin", "Price", "Williams", "Collins", "Jones", "Davis", "Green", "Robinson", "Thomas", "Wright", "Taylor", "Gabriel", "Miller", "King", "Lee", "Lew", "Walker", "Hamilton", "James", "Hill", "Gonzales", "Beasley", "Hall", "Marshall", "Hoover", "Parker", "Houston", "Granger", "Brown", "Garcia", "Sanders", "Rodriguez", "Hernandez", "Wilson", "Anderson", "Moore", "Lee", "Perez", "Clark", "King", "Scott", "Torres", "Adams", "Nelson", "Bighetti", "Baker", "Roberts", "Evans", "Diaz", "Simpson", "Blake", "Griffin", "Lewis", "Evans", "Cox", "Carter", "Tanaka", "Suzuki", "Stoker", "Morgan", "Quinn", "Mack", "Amend", "May", "Vasquez", "Stills", "Miller", "Jeffrey", "Rose", "Butler", "Noah", "Gasol", "Glasnow", "Robinson", "Fielder", "Pera", "Happ", "Souza", "Lavine", "Klein", "Armisen", "Brownstein", "Perkins", "Wilkerson", "Olson", "Franklin", "Brooks", "Nolan", "Ryan", "Shedlock", "Schwartz", "Singer", "Reed", "Richards", "Swanson", "Bush", "Morris", "Potter", "Weasley", "Law", "Luck", "Burback", "Burke", "Shanahan", "Lynch", "Walsh", "Cain", "Kane", "Lane", "Michaels", "Matthews", "Evans", "Trubisky", "Murray", "Allen", "Jobs", "Jeffrey", "Barkley", "Coulton", "Phillips", "Ray", "Durand", "Coughlin", "Davison", "Davis", "Sosa", "Johnson", "Smith", "Bernard", "Schmitt", "Agnew", "Woodley", "Fox", "Dempsey", "Wrigley", "Burrow", "Proche", "Robertson", "Robinson", "Lynch", "Wallace"]
@@ -17,13 +20,13 @@ wr1catch = random.randint(1,25)
 wr1age = 0
 wr1grade = random.choice(grades)
 if wr1grade == "- FR -":
-  wr1age = 15
+  wr1age = 14
 if wr1grade == "- SO -":
-  wr1age = 16
+  wr1age = 15
 if wr1grade == "- JR -":
-  wr1age = 17
+  wr1age = 16
 if wr1grade == "- SR -":
-  wr1age = 18
+  wr1age = 17
 
 wr2 = random.choice(first_name) + " " + random.choice(last_name)
 wr2speed = random.randint(1,22)
@@ -31,13 +34,13 @@ wr2catch = random.randint(1,22)
 wr2age = 0
 wr2grade = random.choice(grades)
 if wr2grade == "- FR -":
-  wr2age = 15
+  wr2age = 14
 if wr2grade == "- SO -":
-  wr2age = 16
+  wr2age = 15
 if wr2grade == "- JR -":
-  wr2age = 17
+  wr2age = 16
 if wr2grade == "- SR -":
-  wr2age = 18
+  wr2age = 17
 
 te = random.choice(first_name) + " " + random.choice(last_name)
 tespeed = random.randint(1,19)
@@ -45,13 +48,13 @@ tecatch = random.randint(1,30)
 teage = 0
 tegrade = random.choice(grades)
 if tegrade == "- FR -":
-  teage = 15
+  teage = 14
 if tegrade == "- SO -":
-  teage = 16
+  teage = 15
 if tegrade == "- JR -":
-  teage = 17
+  teage = 16
 if tegrade == "- SR -":
-  teage = 18
+  teage = 17
 
 rb = random.choice(first_name) + " " + random.choice(last_name)
 rbspeed = random.randint(1,32)
@@ -59,13 +62,13 @@ rbcatch = random.randint(1,19)
 rbage = 0
 rbgrade = random.choice(grades)
 if rbgrade == "- FR -":
-  rbage = 15
+  rbage = 14
 if rbgrade == "- SO -":
-  rbage = 16
+  rbage = 15
 if rbgrade == "- JR -":
-  rbage = 17
+  rbage = 16
 if rbgrade == "- SR -":
-  rbage = 18
+  rbage = 17
 
 acceptable_numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"]
 wr_numbers = ["10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89"]
@@ -82,17 +85,18 @@ longacc = 0
 speed = 0
 agility = 0
 
-weightslvl = 0
-sprintsslvl = 0
-coneslvl = 0
-tirelvl = 0
-passlvl = 0
+weightslvl = 1
+tracklvl = 1
+coneslvl = 1
+targetslvl = 1
+fieldlvl = 1
 
 def get_name():
   global name
   global number
   global team
   team = random.choice(high_schools)
+  high_schools.remove(team)
   name = input("Enter your name: ")
   number_req = input("Enter your number request: ")
   while number_req not in acceptable_numbers:
@@ -152,36 +156,41 @@ def train():
   global longacc
   global speed
   global agility
-  print("BENCH | SPRINT | CONES | TARGET TOSS | LONG TOSS")
+  global weightslvl
+  global tracklvl
+  global coneslvl
+  global targetslvl
+  global fieldlvl
+  print("LIFT | SPRINT | CONES | TARGET TOSS | LONG TOSS")
   train_type = input("How would you like to train? ").lower()
-  train_effect = random.randint(1,3) 
-  while train_type != "bench" and train_type != "sprint" and train_type != "cones" and train_type != "target toss" and train_type != "long toss":
-    print("BENCH | SPRINT | CONES | TARGET TOSS | LONG TOSS")
+  train_effect = (0.1 * random.randint(1,3))
+  while train_type != "lift" and train_type != "sprint" and train_type != "cones" and train_type != "target toss" and train_type != "long toss":
+    print("LIFT | SPRINT | CONES | TARGET TOSS | LONG TOSS")
     train_type = input("Enter a valid training method: ").lower()
-  if train_type == "bench":
-    strength += train_effect
+  if train_type == "lift":
+    strength += (train_effect * weightslvl)
   if train_type == "sprint":
-    speed += train_effect
+    speed += (train_effect * tracklvl)
   if train_type == "cones":
-    agility += train_effect
+    agility += (train_effect * coneslvl)
   if train_type == "target toss":
-    shortacc += train_effect
+    shortacc += (train_effect * targetslvl)
   if train_type == "long toss":
-    longacc += train_effect
+    longacc += (train_effect * fieldlvl)
   print()
   print_dash()
 
 def print_training():
   global weightslvl
-  global sprintsslvl
+  global tracklvl
   global coneslvl
-  global tirelvl
-  global passlvl
+  global targetslvl
+  global fieldlvl
   print("Weights - Level " + str(weightslvl))
-  print("Track   - Level " + str(sprintsslvl))
-  print("Cones   - Level " + str(weightslvl))
-  print("Targets - Level " + str(weightslvl))
-  print("Field   - Level " + str(weightslvl))
+  print("Track   - Level " + str(tracklvl))
+  print("Cones   - Level " + str(coneslvl))
+  print("Targets - Level " + str(targetslvl))
+  print("Field   - Level " + str(fieldlvl))
 
 def get_team_numbers():
   global wr1_num
@@ -228,7 +237,9 @@ def print_team():
   global age
   global team
   global name
-  print(team)
+  global wins
+  global losses
+  print(team + " " + str(wins) + "-" + str(losses))
   print("#" + number + " " + name + " - QB " + grade + " " + str(age))
   print("#" + wr1_num + " " + wr1 + " - WR - " + str(wr1speed) + " SPD - " + str(wr1catch) + " CAT " + wr1grade + " " + str(wr1age))
   print("#" + wr2_num + " " + wr2 + " - WR - " + str(wr2speed) + " SPD - " + str(wr2catch) + " CAT " + wr2grade + " " + str(wr2age))
@@ -259,11 +270,20 @@ def print_dash():
     option = input("Select an option: ").lower()
   print()
   if option == "play":
-    pass
+    play(random.choice(high_schools))
   if option == "see team":
     print_team()
   if option == "train":
     train()
+
+def play(opponent):
+  high_schools.remove(opponent)
+  home_or_away = random.randint(1,2)
+  if home_or_away == 1:
+    print(team + " at " + opponent)
+  else:
+    print(opponent + " at " + team)
+  input("Press enter to continue")
 
 def start():
   get_name()
