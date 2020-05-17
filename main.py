@@ -1,4 +1,5 @@
 import random
+import time
 
 name = "Max"
 number = "0"
@@ -85,7 +86,7 @@ rb_numbers = ["20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" "
 
 high_schools = ["Grandview Academy", "Clearwater High", "Oakwood High", "Lincoln Prep", "Riverbank High", "Central Valley Academy"]
 
-money = 0
+money = 10
 
 strength = 0
 shortacc = 0
@@ -115,6 +116,12 @@ def get_name():
   else:
     number = number_req
   print()
+
+def get_new_name():
+  global name
+  name = input("Enter your name: ")
+  print()
+  print_dash()
 
 def get_archetype():
   global strength
@@ -148,12 +155,15 @@ def get_archetype():
     agility = 5
   print()
 
+overall = 0
+
 def print_stats():
   global strength
   global shortacc
   global longacc
   global speed
   global agility
+  global overall
   ovr = (strength + shortacc + longacc + speed + agility) / 5
   overall = round(ovr, 1)
   rstrength = round(strength,1)
@@ -261,16 +271,23 @@ def print_team():
   global dl
   global db
   global lb
+  global overall
   print(team + " " + str(wins) + "-" + str(losses))
   print("#" + number + " " + name + " - QB " + grade + " " + str(age))
   print("#" + wr1_num + " " + wr1 + " - WR - " + str(wr1speed) + " SPD - " + str(wr1catch) + " CAT " + wr1grade + " " + str(wr1age))
   print("#" + wr2_num + " " + wr2 + " - WR - " + str(wr2speed) + " SPD - " + str(wr2catch) + " CAT " + wr2grade + " " + str(wr2age))
   print("#" + te_num + " " + te + " - TE - " + str(tespeed) + " SPD - " + str(tecatch) + " CAT " + tegrade + " " + str(teage))
   print("#" + rb_num + " " + rb + " - RB - " + str(rbspeed) + " SPD - " + str(rbcatch) + " CAT " + rbgrade + " " + str(rbage))
-  print("OL - " + str(olovr))
-  print("DL - " + str(dl))
-  print("LB - " + str(lb))
-  print("DB - " + str(db))  
+  print("OL - " + str(olovr) + " BLK")
+  print("DL - " + str(dl) + " RUS")
+  print("LB - " + str(lb) + " COV")
+  print("DB - " + str(db) + " COV")  
+  off_ovr = (wr1speed + wr1catch + wr2speed + wr2catch + tespeed + tecatch + rbspeed + rbcatch + overall + olovr) / 10
+  round(off_ovr, 1)
+  print("OFF - " + str(off_ovr))
+  def_ovr = (dl + lb + db) / 3
+  round(def_ovr, 1)
+  print("DEF - " + str(def_ovr))
   print()
   input("Press Enter to Continue ")
   print()
@@ -289,11 +306,11 @@ def print_dash():
   print()
   print_training()
   print()
-  print("PLAY | SEE TEAM | TRAIN | SHOP")
+  print("PLAY | SEE TEAM | TRAIN | SHOP | EDIT PLAYER")
   option = input("Select an option: ").lower()
-  while option != "play" and option != "see team" and option != "train" and option != "shop":
+  while option != "play" and option != "see team" and option != "train" and option != "shop" and "edit" not in option:
     print("Enter a valid option:")
-    print("PLAY | SEE TEAM | TRAIN | SHOP")
+    print("PLAY | SEE TEAM | TRAIN | SHOP | EDIT PLAYER")
     option = input("Select an option: ").lower()
   print()
   if option == "play":
@@ -304,6 +321,8 @@ def print_dash():
     train()
   if option == "shop":
     shop()
+  if "edit" in option:
+    get_new_name()
 
 def season():
   league
@@ -320,15 +339,19 @@ def play(opponent):
   home_or_away = random.randint(1,2)
   if home_or_away == 1:
     print(team + " at " + opponent)
+    possession()
   else:
     print(opponent + " at " + team)
+    possession()
   input("Press enter to continue")
 
 pos = "OFF"
 
 def possession():
   global pos
+  qb_play()
   time = 60
+  quarter = 1
   if time > 45:
     quarter == 1
   elif time < 45 and time > 30:
@@ -343,9 +366,56 @@ def possession():
     print("Game over")
   if pos == "OFF":
     pos = "DEF"
-    time
   else:
     pos = "OFF"
+
+openness = ["wide open", "open", "slightly covered", "covered", "heavily covered"]
+
+def qb_play():
+  global wr1
+  global wr1speed
+  global wr1catch
+  global wr2
+  global wr2speed
+  global wr2catch
+  global te
+  global tespeed
+  global tecatch
+  global olovr
+  global dl
+  global db
+  global lb
+  global overall
+  wr1_yards = random.randint(4,18)
+  wr2_yards = random.randint(6,26)
+  te_yards = random.randint(3,15)
+  rb_yards = random.randint(1,10)
+  wr1_opening = (wr1_yards * 2) / wr1speed
+  wr2_opening = (wr2_yards * 2) / wr2speed
+  te_opening = (te_yards * 2) / tespeed
+  rb_opening = (rb_yards * 2) / rbspeed
+  wr1_openness = random.choice(openness)
+  wr2_openness = random.choice(openness)
+  te_openness = random.choice(openness)
+  rb_openness = random.choice(openness)
+  wr1_code = random.randint(100,999)
+  wr2_code = random.randint(100,999)
+  te_code = random.randint(100,999)
+  rb_code = random.randint(100,999)
+  pass_dec = "12345"
+  while pass_dec != wr1_code and pass_dec != wr2_code and pass_dec != te_code and pass_dec != rb_code:
+    time.sleep(rb_opening)
+    print(str(rb_code) + " - " + rb + " is " + rb_openness + " for " + str(rb_yards) + " yards")
+    pass_code = input("Enter your decision: ")
+    time.sleep(te_opening)
+    print(str(te_code) + " - " + te + " is " + te_openness + " for " + str(te_yards) + " yards")
+    pass_code = input("Enter your decision: ")
+    time.sleep(wr1_opening)
+    print(str(wr1_code) + " - " + wr1 + " is " + wr1_openness + " for " + str(wr1_yards) + " yards")
+    pass_code = input("Enter your decision: ")
+    time.sleep(wr2_opening)
+    print(str(wr2_code) + " - " + wr2 + " is " + wr2_openness + " for " + str(wr2_yards) + " yards")
+    pass_code = input("Enter your decision: ")
 
 weights_price = 5
 track_price = 5
@@ -370,27 +440,28 @@ def shop():
   purchase = input("What would you like to buy? ").lower()
   while "weights" not in purchase and "track" not in purchase and "cones" not in purchase and "targets" not in purchase and "field" not in purchase:
     purchase = input("Enter a valid item ").lower()
-  if "weights" in purchase:
+  if "weights" in purchase and money >= weights_price:
     weightslvl += 1
     money -= weights_price
     weights_price += 5
-  if "track" in purchase:
+  if "track" in purchase and money >= track_price:
     tracklvl += 1
     money -= track_price
     track_price += 5
-  if "cones" in purchase:
+  if "cones" in purchase and money >= cones_price:
     coneslvl += 1
     money -= cones_price
     cones_price += 5
-  if "targets" in purchase:
+  if "targets" in purchase and money >= targets_price:
     targetslvl += 1
     money -= targets_price
     targets_price += 5
-  if "field" in purchase:
+  if "field" in purchase and money >= field_price:
     fieldlvl += 1
     money -= field_price
     field_price += 5
   else:
+    print()
     print_dash()
 
 def start():
