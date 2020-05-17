@@ -346,9 +346,13 @@ def play(opponent):
   input("Press enter to continue")
 
 pos = "OFF"
+yardline = 20
+first_down_yardline = 0
+down = 1
 
 def possession():
   global pos
+  global yardline
   qb_play()
   time = 60
   quarter = 1
@@ -370,6 +374,16 @@ def possession():
     pos = "OFF"
 
 openness = ["wide open", "open", "slightly covered", "covered", "heavily covered"]
+pass_dec = "12345"
+
+wr1_code = random.randint(100,999)
+wr2_code = random.randint(100,999)
+te_code = random.randint(100,999)
+rb_code = random.randint(100,999)
+wr1_yards = random.randint(4,18)
+wr2_yards = random.randint(6,26)
+te_yards = random.randint(3,15)
+rb_yards = random.randint(1,10)
 
 def qb_play():
   global wr1
@@ -386,10 +400,28 @@ def qb_play():
   global db
   global lb
   global overall
-  wr1_yards = random.randint(4,18)
-  wr2_yards = random.randint(6,26)
-  te_yards = random.randint(3,15)
-  rb_yards = random.randint(1,10)
+  global yardline
+  global down
+  global first_down_yardline
+  global pass_dec
+  global wr1_code
+  global wr2_code
+  global te_code
+  global rb_code
+  global wr1_yards
+  global wr2_yards
+  global te_yards
+  global rb_yards
+  if down == 1:
+    dis_down = "First"
+  if down == 2:
+    dis_down = "Second"
+  if down == 3:
+    dis_down = "Third"
+  if down == 4:
+    dis_down = "Fourth"
+  print(dis_down + " and " + str(10 - first_down_yardline))
+  print(str(100 - yardline) + " yards to go")
   wr1_opening = (wr1_yards * 2) / wr1speed
   wr2_opening = (wr2_yards * 2) / wr2speed
   te_opening = (te_yards * 2) / tespeed
@@ -398,24 +430,71 @@ def qb_play():
   wr2_openness = random.choice(openness)
   te_openness = random.choice(openness)
   rb_openness = random.choice(openness)
-  wr1_code = random.randint(100,999)
-  wr2_code = random.randint(100,999)
-  te_code = random.randint(100,999)
-  rb_code = random.randint(100,999)
-  pass_dec = "12345"
+  if wr1_yards <= 6:
+    wr1_code = random.randint(100,999)
+  elif wr1_yards <= 16:
+    wr1_code = random.randint(1000,9999)
+  elif wr1_yards <= 23:
+    wr1_code = random.randint(10000,99999)
+  else:
+    wr1_code = random.randint(100000,999999)
+  if wr2_yards <= 6:
+    wr2_code = random.randint(100,999)
+  elif wr2_yards <= 16:
+    wr2_code = random.randint(1000,9999)
+  elif wr2_yards <= 23:
+    wr2_code = random.randint(10000,99999)
+  else:
+    wr2_code = random.randint(100000,999999)
+  if te_yards <= 6:
+    te_code = random.randint(100,999)
+  elif te_yards <= 16:
+    te_code = random.randint(1000,9999)
+  elif te_yards <= 23:
+    te_code = random.randint(10000,99999)
+  else:
+    te_code = random.randint(100000,999999)
+  if rb_yards <= 6:
+    rb_code = random.randint(100,999)
+  elif rb_yards <= 16:
+    rb_code = random.randint(1000,9999)
+  elif rb_yards <= 23:
+    rb_code = random.randint(10000,99999)
+  else:
+    rb_code = random.randint(100000,999999)
   while pass_dec != wr1_code and pass_dec != wr2_code and pass_dec != te_code and pass_dec != rb_code:
-    time.sleep(rb_opening)
     print(str(rb_code) + " - " + rb + " is " + rb_openness + " for " + str(rb_yards) + " yards")
-    pass_code = input("Enter your decision: ")
-    time.sleep(te_opening)
     print(str(te_code) + " - " + te + " is " + te_openness + " for " + str(te_yards) + " yards")
-    pass_code = input("Enter your decision: ")
-    time.sleep(wr1_opening)
     print(str(wr1_code) + " - " + wr1 + " is " + wr1_openness + " for " + str(wr1_yards) + " yards")
-    pass_code = input("Enter your decision: ")
-    time.sleep(wr2_opening)
     print(str(wr2_code) + " - " + wr2 + " is " + wr2_openness + " for " + str(wr2_yards) + " yards")
-    pass_code = input("Enter your decision: ")
+    check_pass_code()
+
+def check_pass_code():
+  global pass_dec
+  global wr1_code
+  global wr2_code
+  global te_code
+  global rb_code
+  global yardline
+  global wr1_yards
+  global wr2_yards
+  global te_yards
+  global rb_yards
+  pass_dec = int(input("Enter your decision: "))
+  if pass_dec == rb_code:
+    print("Complete!")
+    yardline += rb_yards
+  elif pass_dec == te_code:
+    print("Complete!")
+    yardline += te_yards
+  elif pass_dec == wr1_code:
+    print("Complete!")
+    yardline += wr1_yards
+  elif pass_dec == wr2_code:
+    print("Complete!")
+    yardline += wr2_yards
+  else:
+    print("Incomplete")
 
 weights_price = 5
 track_price = 5
