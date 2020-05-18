@@ -353,7 +353,7 @@ down = 1
 def possession():
   global pos
   global yardline
-  qb_play()
+  global down
   time = 60
   quarter = 1
   if time > 45:
@@ -369,7 +369,11 @@ def possession():
   elif time == 0:
     print("Game over")
   if pos == "OFF":
-    pos = "DEF"
+    while down < 4:
+      qb_play()
+      if down == 4:
+        print("Punt")
+        pos = "DEF"
   else:
     pos = "OFF"
 
@@ -480,21 +484,34 @@ def check_pass_code():
   global wr2_yards
   global te_yards
   global rb_yards
+  global first_down_yardline
+  global down
   pass_dec = int(input("Enter your decision: "))
   if pass_dec == rb_code:
     print("Complete!")
     yardline += rb_yards
+    first_down_yardline += rb_yards
   elif pass_dec == te_code:
     print("Complete!")
     yardline += te_yards
+    first_down_yardline += te_yards
   elif pass_dec == wr1_code:
     print("Complete!")
     yardline += wr1_yards
+    first_down_yardline += wr1_yards
   elif pass_dec == wr2_code:
     print("Complete!")
     yardline += wr2_yards
+    first_down_yardline += wr2_yards
   else:
     print("Incomplete")
+  if first_down_yardline < 10:
+    down += 1
+  else:
+    down = 1
+    first_down_yardline = 0
+  if yardline >= 100:
+    print("Touchdown!")
 
 weights_price = 5
 track_price = 5
